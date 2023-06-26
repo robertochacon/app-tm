@@ -6,11 +6,13 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { AuthorsComponent } from './components/authors/authors.component';
 import { UsersComponent } from './components/users/users.component';
 import { LoginComponent } from './components/login/login.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   // {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'search', component: SearchComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'books', component: BooksComponent},
   {path: 'categories', component: CategoriesComponent},

@@ -17,6 +17,7 @@ import { AuthorsComponent } from './components/authors/authors.component';
 import { BooksComponent } from './components/books/books.component';
 import { ModalBooksComponent } from './components/modal-books/modal-books.component';
 import { ModalAuthorComponent } from './components/modal-author/modal-author.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ModalAuthorComponent } from './components/modal-author/modal-author.com
     AuthorsComponent,
     BooksComponent,
     ModalBooksComponent,
-    ModalAuthorComponent
+    ModalAuthorComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

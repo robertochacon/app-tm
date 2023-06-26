@@ -1,5 +1,8 @@
 <nav class="navbar shadow p-2 d-flex justify-content-end bg-success">
-    <button routerLink="/consulting-out" class="btn btn-light" type="button">
+    <button *ngIf="where=='login'" routerLink="search" class="btn btn-lg btn-light" type="button">
         Buscar libro
+    </button>
+    <button *ngIf="where=='search'" routerLink="search" class="btn btn-lg btn-light" type="button">
+        Ir al login
     </button>
 </nav>

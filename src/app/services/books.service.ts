@@ -23,6 +23,11 @@ export class BooksService {
     return this.http.get(url, this.options);
   }
 
+  searchBooks(json: any): Observable<any>{
+    const url = this.url+'/search';
+    return this.http.post(url, json, this.options);
+  }
+
   getBooks(identification: string): Observable<any>{
     const url = this.url+'/'+identification;
     return this.http.get(url, this.options);
