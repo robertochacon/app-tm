@@ -1,5 +1,5 @@
 
-## Pasos para instalar api de gestion de libros
+## Pasos para instalar frontend de gestion de libros
 
 - Paso 1. Clonar o descargar el proyecto.
 - Paso 2. Ejecutar el comando *npm install o npm update*.
