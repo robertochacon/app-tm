@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div class="fc">
+
+    <div class="container">
+
+        <div class="row justify-content-center allscreen pt-5">
+
+            <div class="col-lg-6 col-md-12 col-sm-12 shadow p-5 text-start border-radio bg-light" style="margin-top:50px;">
+                <div class="alert alert-danger" role="alert" *ngIf="loginError">
+                    Su identificacion o su clave esta incorrecta, verifique y vuelva a intentar
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                    <img src="../../../assets/img/books.png" alt="" width="150px">
+                </div>
+                <label class="mt-3" for="email"><h5>Email</h5></label>
+                <input type="email" [(ngModel)]="email" class="form-control shadow" maxLength="50" placeholder="Digite su email">
+                <label class="mt-3" for="pass"><h5>Clave</h5></label>
+                <input type="password" [(ngModel)]="password" class="form-control shadow" maxLength="11" placeholder="Digite su clave">
+                <button *ngIf="!loading" class="btn btn-success btn-block btn-lg mt-3 shadow" [disabled]="email === '' && password === ''" (click)="login()">
+                    Ingresar
+                </button>
+                <button *ngIf="loading" class="btn btn-success btn-block btn-lg mt-3 shadow">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Ingresando...
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
