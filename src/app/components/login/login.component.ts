@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
 
     this._authentication.login(this.email,this.password).subscribe((response)=>{
 
+        localStorage.setItem("role", response.access_token.user.role);
         localStorage.setItem("name", response.access_token.user.name);
         localStorage.setItem("email", this.email);
         localStorage.setItem("user", JSON.stringify(response.access_token.user));

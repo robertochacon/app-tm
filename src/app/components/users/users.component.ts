@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 declare const $: any;
 
 @Component({
@@ -23,10 +24,14 @@ export class UsersComponent implements OnInit {
   listUsers: any[] = [];
   listEntities: any[] = [];
 
-  constructor(private _users: UsersService) { }
+  constructor(private router: Router, private _users: UsersService) { }
 
   ngOnInit(): void {
     this.getAllUsers();
+    let role = localStorage.getItem('role');
+    if(role !== 'admin'){
+      this.router.navigate(["/dashboard"]);
+    }
   }
 
   getAllUsers(){

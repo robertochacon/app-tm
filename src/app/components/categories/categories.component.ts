@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 declare const $: any;
 
@@ -17,10 +18,14 @@ export class CategoriesComponent implements OnInit {
   name = '';
   listCategories: any[] = [];
 
-  constructor(private _categories: CategoriesService) { }
+  constructor(private router: Router, private _categories: CategoriesService) { }
 
   ngOnInit(): void {
     this.getAllCategories();
+    let role = localStorage.getItem('role');
+    if(role !== 'admin'){
+      this.router.navigate(["/dashboard"]);
+    }
   }
 
   getAllCategories(){

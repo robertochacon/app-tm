@@ -18,6 +18,7 @@ export class AuthorsComponent implements OnInit {
   name = '';
   image = '';
   listAuthors: any[] = [];
+  author_selected: any;
 
   constructor(private _authors: AuthorsService) { }
 

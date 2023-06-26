@@ -35,7 +35,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let category of listCategories" class="text-start">
-                            <td><i class="fa-solid fa-building mr-2 text-black"></i></td>
+                            <td><i class="fa-solid fa-tag mr-2 text-black"></i></td>
                             <td>{{category.name}}</td>
                             <td>{{category.created_at | date:'dd/MM/yyyy'}}</td>
                             <td>
@@ -81,7 +81,7 @@
 
 <div class="d-flex justify-content-center align-items-center text-center d-sm-block d-lg-none d-md-none" style="height:100vh;">
     <div>
-        <!-- <img class="mb-3" src="../../../assets/img/devices.svg" width="80%" alt=""> -->
+        <img class="mb-3" src="./assets/img/devices.svg" width="80%" alt="">
         <h2 class="mb-3">Utilice una tableta o una pc para visualizar contenido.</h2>
         <a routerLink="/" class="btn btn-success shadow">Pagina principal</a>
     </div>

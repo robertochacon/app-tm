@@ -15,6 +15,8 @@ import { UsersComponent } from './components/users/users.component';
 import { ModalPasswordComponent } from './components/modal-password/modal-password.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { BooksComponent } from './components/books/books.component';
+import { ModalBooksComponent } from './components/modal-books/modal-books.component';
+import { ModalAuthorComponent } from './components/modal-author/modal-author.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { BooksComponent } from './components/books/books.component';
     UsersComponent,
     ModalPasswordComponent,
     AuthorsComponent,
-    BooksComponent
+    BooksComponent,
+    ModalBooksComponent,
+    ModalAuthorComponent
   ],
   imports: [
     BrowserModule,

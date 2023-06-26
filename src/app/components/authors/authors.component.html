@@ -35,15 +35,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let category of listAuthors" class="text-start">
-                            <td><i class="fa-solid fa-building mr-2 text-black"></i></td>
-                            <td>{{category.name}}</td>
+                        <tr *ngFor="let author of listAuthors" class="text-start">
+                            <td><i class="fa-solid fa-pen-nib mr-2 text-black"></i></td>
+                            <td>{{author.name}}</td>
                             <td>
-                                <a target="_blank" class="btn btn-info text-white" href="{{category.image}}">Ver imagen de autor</a>
+                                <a class="btn btn-info text-white" (click)="author_selected=author" data-bs-toggle="modal" data-bs-target="#seeAuthor">Ver imagen de autor</a>
                             </td>
-                            <td>{{category.created_at | date:'dd/MM/yyyy'}}</td>
+                            <td>{{author.created_at | date:'dd/MM/yyyy'}}</td>
                             <td>
-                                <button class="btn btn-danger" (click)="delete(category.id)"><i class="fa-solid fa-trash"></i></button>
+                                <button class="btn btn-danger" (click)="delete(author.id)"><i class="fa-solid fa-trash"></i></button>
                             </td>
                         </tr>
                     </tbody>
@@ -83,10 +83,12 @@
     </div>
 </div>
 
+<app-modal-author [author]="author_selected"></app-modal-author>
+
 
 <div class="d-flex justify-content-center align-items-center text-center d-sm-block d-lg-none d-md-none" style="height:100vh;">
     <div>
-        <!-- <img class="mb-3" src="../../../assets/img/devices.svg" width="80%" alt=""> -->
+        <img class="mb-3" src="./assets/img/devices.svg" width="80%" alt="">
         <h2 class="mb-3">Utilice una tableta o una pc para visualizar contenido.</h2>
         <a routerLink="/" class="btn btn-success shadow">Pagina principal</a>
     </div>

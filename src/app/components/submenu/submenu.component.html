@@ -1,10 +1,10 @@
 <div class="col-lg-12 col-md-12 col-sm-12 text-center without-borders d-flex" style="background:#96bc96;">
     <a routerLink="/dashboard" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns"><i class="fa-solid fa-house mr-2 text-black"></i> Inicio</a>
-    <a routerLink="/categories" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns"><i class="fa-solid fa-building mr-2 text-black"></i> Categorias</a>
-    <a routerLink="/authors" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns"><i class="fa-solid fa-building mr-2 text-black"></i> Autores</a>
-    <!-- <a routerLink="/entities" *ngIf="role==='super_admin'" [ngClass]="page==='entities'?'selected':''" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns"><i class="fa-solid fa-building mr-2 text-black"></i> Entidades</a> -->
-    <a routerLink="/books" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns"><i class="fa-solid fa-file mr-2 text-black"></i> Libros</a>
-    <a routerLink="/users" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns"><i class="fa-solid fa-users mr-2 text-black"></i> Usuarios</a>
+    <a *ngIf="role==='admin'" routerLink="/categories" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns"><i class="fa-solid fa-tag mr-2 text-black"></i> Categorias</a>
+    <a routerLink="/authors" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns"><i class="fa-solid fa-pen-nib mr-2 text-black"></i> Autores</a>
+    <!-- <a routerLink="/entities" *ngIf="role==='admin'" [ngClass]="page==='entities'?'selected':''" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns"><i class="fa-solid fa-building mr-2 text-black"></i> Entidades</a> -->
+    <a routerLink="/books" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns"><i class="fa-solid fa-book mr-2 text-black"></i> Libros</a>
+    <a *ngIf="role==='admin'" routerLink="/users" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns"><i class="fa-solid fa-users mr-2 text-black"></i> Usuarios</a>
     <a [ngClass]="page" data-bs-toggle="modal" data-bs-target="#changePassword" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns" style="cursor:pointer;"><i class="fa-solid fa-cog mr-2 text-black"></i> Configuracion</a>
     <a [ngClass]="page" (click)="salir()" class="ml-3 pl-3 pt-3 pb-3 mt-2 mb-2 d-flex align-items-center btns" style="cursor:pointer;"><i class="fa-solid fa-right-from-bracket mr-2 text-black"></i> Salir</a>
 </div>

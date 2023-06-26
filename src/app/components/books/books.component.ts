@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { AuthorsService } from 'src/app/services/authors.service';
 import { BooksService } from 'src/app/services/books.service';
 import Swal from 'sweetalert2'
 declare const $: any;
@@ -15,13 +17,34 @@ export class BooksComponent implements OnInit {
   loading = false;
   loadData = false;
   result = '';
-  name = '';
+  category_id = 'seleccionar';
+  author_id = 'seleccionar';
+  title = '';
+  description = '';
+  image = '';
+  listCategories: any[] = [];
+  listAuthors: any[] = [];
   listBooks: any[] = [];
+  book_selected: any;
 
-  constructor(private _books: BooksService) { }
+  constructor(private _categories: CategoriesService, private _authors: AuthorsService, private _books: BooksService) { }
 
   ngOnInit(): void {
+    this.getAllCategories();
+    this.getAllAuthors();
     this.getAllBooks();
+  }
+
+  getAllCategories(){
+    this._categories.getAllCategories().subscribe((response)=>{
+      this.listCategories = response.data;
+    }, error=>{})
+  }
+
+  getAllAuthors(){
+    this._authors.getAllAuthors().subscribe((response)=>{
+      this.listAuthors = response.data;
+    }, error=>{})
   }
 
   getAllBooks(){
@@ -50,14 +73,20 @@ export class BooksComponent implements OnInit {
   }
 
   reset(){
-    this.name = '';
+    this.title = '';
+    this.description = '';
+    this.image = '';
   }
   
   save(): void {
 
     this.loading = true;
     let datos = new FormData();
-    datos.append("name",this.name);
+    datos.append("category_id",this.category_id);
+    datos.append("author_id",this.author_id);
+    datos.append("title",this.title);
+    datos.append("description",this.description);
+    datos.append("image",this.image);
 
     this._books.setBooks(datos).subscribe((response)=>{
       this.loading = false;
@@ -88,7 +117,7 @@ export class BooksComponent implements OnInit {
   delete(id: any): void {
 
     Swal.fire({
-      title: 'Deseas eliminar esta categoria?',
+      title: 'Deseas eliminar este libro?',
       // text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,

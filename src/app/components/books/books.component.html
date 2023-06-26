@@ -37,13 +37,13 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let book of listBooks" class="text-start">
-                            <td><i class="fa-solid fa-building mr-2 text-black"></i></td>
+                            <td><i class="fa-solid fa-book mr-2 text-black"></i></td>
                             <td>{{book.category.name}}</td>
                             <td>{{book.title}}</td>
                             <td>{{book.author.name}}</td>
                             <td>{{book.created_at | date:'dd/MM/yyyy'}}</td>
                             <td>
-                                <button class="btn btn-info mr-2"><i class="fa-solid fa-eye"></i></button>
+                                <button class="btn btn-info mr-2" (click)="book_selected=book" data-bs-toggle="modal" data-bs-target="#seeBook"><i class="fa-solid fa-eye"></i></button>
                                 <button class="btn btn-danger" (click)="delete(book.id)"><i class="fa-solid fa-trash"></i></button>
                             </td>
                         </tr>
@@ -68,8 +68,24 @@
 
                 <div class="col-lg-6 col-md-6 col-sm-12 shadow text-center border-radio pt-3">
                     <h5>Información general</h5>
-                    <input type="text" [(ngModel)]="name" class="form-control shadow mt-3" maxLength="11" placeholder="Digite un nombre">
-                    <button *ngIf="!loading" [disabled]="name===''" class="btn btn-success btn-block btn-lg mt-4 mb-3 shadow" (click)="save()">
+
+                    <select class="form-control shadow mt-3" [(ngModel)]="category_id">
+                        <option value="seleccionar">Seleccionar categoria</option>
+                        <option *ngFor="let category of listCategories" value={{category.id}}>{{ category.name }}</option>
+                    </select>
+
+                    <select class="form-control shadow mt-3" [(ngModel)]="author_id">
+                        <option value="seleccionar">Seleccionar autor</option>
+                        <option *ngFor="let author of listAuthors" value={{author.id}}>{{ author.name }}</option>
+                    </select>
+
+                    <input type="text" [(ngModel)]="title" class="form-control shadow mt-3" maxLength="50" placeholder="Digite un nombre">
+
+                    <textarea [(ngModel)]="description" class="form-control shadow mt-2" rows="3" placeholder="Digite una descripcion"></textarea>
+
+                    <input type="url" [(ngModel)]="image" class="form-control shadow mt-3" maxLength="100" placeholder="Url de imagen">
+
+                    <button *ngIf="!loading" [disabled]="title===''" class="btn btn-success btn-block btn-lg mt-4 mb-3 shadow" (click)="save()">
                         Registrar
                     </button>
                     <button *ngIf="loading" class="btn btn-success btn-block btn-lg mt-3 mb-3 shadow" (click)="save()">
@@ -83,10 +99,11 @@
     </div>
 </div>
 
+<app-modal-books [book]="book_selected"></app-modal-books>
 
 <div class="d-flex justify-content-center align-items-center text-center d-sm-block d-lg-none d-md-none" style="height:100vh;">
     <div>
-        <!-- <img class="mb-3" src="../../../assets/img/devices.svg" width="80%" alt=""> -->
+        <img class="mb-3" src="./assets/img/devices.svg" width="80%" alt="">
         <h2 class="mb-3">Utilice una tableta o una pc para visualizar contenido.</h2>
         <a routerLink="/" class="btn btn-success shadow">Pagina principal</a>
     </div>
