@@ -11,12 +11,14 @@ import Swal from 'sweetalert2'
 export class SearchComponent implements OnInit {
 
   listCategories: any[] = [];
+  listBooks: any[] = [];
   action = 'search';
   loading: boolean = false;
   title:any = null;
   category_id:any = null;
   qfrom:any = null;
   qto:any = null;
+  book_selected:any;
 
   constructor(private _categories: CategoriesService, private _books: BooksService) { }
 
@@ -33,15 +35,21 @@ export class SearchComponent implements OnInit {
   search(): void {
 
     this.loading = true;
-    let datos = new FormData();
-    datos.append("title",this.title);
-    datos.append("category_id",this.category_id);
-    datos.append("qfrom",this.qfrom);
-    datos.append("qto",this.qto);
+    let datos = {
+      "title":this.title,
+      "category_id":this.category_id,
+      "qfrom":this.qfrom,
+      "qto":this.qto
+    }
 
-    this._books.setBooks(datos).subscribe((response)=>{
-      this.loading = false;
-      this.action = 'list';
+    this._books.searchBooks(datos).subscribe((response)=>{
+      this.listBooks = response.data;
+        this.loading = false;
+        this.action = 'list';
+        this.title = null;
+        this.category_id = null;
+        this.qfrom = null;
+        this.qto = null;
     },error => {
       Swal.fire({
         position: 'center',
@@ -51,7 +59,7 @@ export class SearchComponent implements OnInit {
         showConfirmButton: false,
         timer: 2000
       });
-      this.loading = false;
+        this.loading = false;
     })
 
   }
